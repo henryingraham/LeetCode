@@ -5,7 +5,7 @@ public:
             return false;
         }
         unsigned int result = 0;
-        unsigned int remainder;
+        short remainder;
         unsigned int y = x;
         while(y != 0){
             remainder = y % 10;
