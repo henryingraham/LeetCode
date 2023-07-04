@@ -13,16 +13,11 @@ class Solution(object):
         if root is None:
             return None
 
-        queue = [root]
-        while queue:
-            current_node = queue.pop(0)
-            temp = current_node.left
-            current_node.left = current_node.right
-            current_node.right = temp
-
-            if current_node.left:
-                queue.append(current_node.left)
-            if current_node.right:
-                queue.append(current_node.right)
+        temp = root.left
+        root.left = root.right
+        root.right = temp
+        
+        self.invertTree(root.left)
+        self.invertTree(root.right)
 
         return root
