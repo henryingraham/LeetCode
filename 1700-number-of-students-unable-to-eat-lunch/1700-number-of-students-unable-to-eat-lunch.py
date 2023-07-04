@@ -7,9 +7,6 @@ class Solution(object):
         """
         count = 0
         while count < len(students):
-            print(students)
-            print(sandwiches)
-            print(' ')
             if students[0] == sandwiches[0]:
                 sandwiches.pop(0)
                 students.pop(0)
