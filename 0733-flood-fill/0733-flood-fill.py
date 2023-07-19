@@ -22,5 +22,4 @@ class Solution(object):
             fill(r,c-1)
             fill(r,c+1)
         fill(sr,sc)
-        print(visited)
         return image
