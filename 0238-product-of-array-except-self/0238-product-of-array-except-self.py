@@ -10,11 +10,11 @@ class Solution(object):
             lp.append(nums[i] * product)
             product *= nums[i]
         product = nums[len(nums) - 1]
-        rp = [product, 1]
+        rp = [1, product]
         for i in range(len(nums) - 2, 0, -1):
-            rp.insert(0, nums[i] * product)
+            rp.append(nums[i] * product)
             product *= nums[i]
         
         for i in range(0, len(nums)):
-            nums[i] = lp[i] * rp[i]
+            nums[i] = lp[i] * rp[len(nums)-i-1]
         return nums
