@@ -1,22 +1,20 @@
 class Solution:
     def makesquare(self, matchsticks: List[int]) -> bool:
-        total_length = sum(matchsticks)
-        if total_length % 4 != 0 or max(matchsticks) > total_length // 4:
+        value = sum(matchsticks)
+        if value < 4:
             return False
-        target_length = total_length // 4
+        if value % 4 != 0:
+            return False
+        edge = value // 4
         matchsticks.sort(reverse=True)
-
-        def form_sides(i, sides):
-            if i == len(matchsticks) and all(side == target_length for side in sides):
+        @cache
+        def findedges(l1, l2, l3, l4, i):
+            nonlocal edge
+            if l1 == l2 == l3 == l4 == edge:
                 return True
-
-            for j in range(4):
-                if sides[j] + matchsticks[i] <= target_length:
-                    new_sides = list(sides)
-                    new_sides[j] += matchsticks[i]
-                    if form_sides(i+1, tuple(new_sides)):
-                        return True
-
-            return False
-
-        return form_sides(0, (0, 0, 0, 0))
+            if i > len(matchsticks) - 1:
+                return False
+            if l1 > edge or l2 > edge or l3 > edge or l4 > edge:
+                return False
+            return findedges(l1 + matchsticks[i], l2, l3, l4, i + 1) or findedges(l1, l2 + matchsticks[i] , l3, l4, i + 1) or findedges(l1, l2, l3 + matchsticks[i], l4, i + 1) or findedges(l1, l2, l3, l4 + matchsticks[i] , i + 1)
+        return findedges(0, 0, 0, 0, 0)
