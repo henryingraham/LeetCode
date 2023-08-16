@@ -12,5 +12,4 @@ class Solution:
                 for k in range(i, -1, -1):
                     width = min(width, dp[k][j])
                     maxarea = max(maxarea, width * (i-k+1))
-        print(dp)
         return maxarea
