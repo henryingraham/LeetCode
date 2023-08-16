@@ -1,5 +1,8 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        if len(prices) == 1:
+            return 0
+        
         maxprof = 0
         buy = prices[0]
         for s in prices[1:]:
