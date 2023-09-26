@@ -1,12 +1,10 @@
-class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
+class Solution(object):
+    def subsets(self, nums):
         memo = [[]]
         
-        
-        for i in range(len(nums)):
-            for j in range(len(memo)):
-                temp = memo[j].copy()
-                temp.append(nums[i])
-                memo.append(temp)
-
+        for num in nums:
+            for i in range(len(memo)):
+                memo.append(memo[i]+[num])
         return memo
+        
+        
