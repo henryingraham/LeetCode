@@ -5,8 +5,7 @@ class Solution:
         
         for i in range(1, len(lp)):
             lp[i] = lp[i-1]*nums[i-1]
-        for i in range(len(rp)-2, -1, -1):
-            rp[i] = rp[i+1]*nums[i+1]
+            rp[-i-1] = rp[-i]*nums[-i]
         
         res = []
         for i in range(0, len(lp)):
