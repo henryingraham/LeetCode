@@ -1,8 +1,11 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        s = {}
-        for i in range(len(nums)):
-            if target-nums[i] in s.keys():
-                return [i, s[target-nums[i]]]
+        ans = []
+        mem = {}
+        for i in range(0,len(nums)):
+            if (target-nums[i] in mem.keys()):
+                ans.append(mem[target-nums[i]])
+                ans.append(i)
+                return ans
             else:
-                s[nums[i]] = i
+                mem[nums[i]] = i
